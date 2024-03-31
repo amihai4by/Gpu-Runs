@@ -1,7 +1,7 @@
 # CUDA Application Docker Container
 ######## warning !!!!!  ######
 ##  THIS app will not stop it's self until you stop it! ###
-This README provides instructions on how to build and run a Docker container for the CUDA application `add.v.3`, designed to run on an NVIDIA DGX system with H100 GPUs.
+This README provides instructions on how to build and run a Docker container for the CUDA application `add.v3`, designed to run on an NVIDIA DGX system with H100 GPUs.
 
 ## Prerequisites
 
@@ -14,15 +14,21 @@ This README provides instructions on how to build and run a Docker container for
 1. **Clone the Repository** (if applicable)
 
    If the application and Dockerfile are hosted in a repository, first clone the repository:
+   
   $ git clone https://github.com/amihai4by/Gpu-Runs
-2. **Navigate to the Directory**
+  
+3. **Navigate to the Directory**
 
 Change directory to where the `Dockerfile` is located:
+
   $ cd Gpu-Runs
+  
 3. **Build the Docker Image**
 
 Run the following command to build the Docker image:
+
   $ docker build -t cuda-app .
+  
 This command builds a Docker image with the tag `cuda-app`.
 
 ## Running the Docker Container
