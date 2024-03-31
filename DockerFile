@@ -1,18 +1,17 @@
-# Use an appropriate CUDA base image
+# Use a CUDA base image
 FROM nvidia/cuda:12.3.2-runtime-ubuntu22.04
 
-# Set a working directory (optional)
+# Set the working directory
 WORKDIR /app
 
-# Install dependencies (if any)
-# For example: RUN apt-get update && apt-get install -y <your-dependencies>
+# Install any dependencies
+# RUN apt-get update && apt-get install -y <your-dependencies>
 
-# Copy your CUDA application into the Docker container
-COPY add.v.3 /app/add.v3
+# Copy the CUDA application and the script into the Docker container
+COPY add.v3 run_and_wait.sh /app/
 
-# Ensure the application is executable
-RUN chmod +x /app/add.v3
+# Make both the application and script executable
+RUN chmod +x /app/add.v3 /app/run_and_wait.sh
 
-# Set the default command to run your application
-# Utilize all 8 GPUs using CUDA_VISIBLE_DEVICES
-CMD CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./add.v.3
+# Run the script with a specified timeout (in seconds) as the default command
+CMD ["/app/run_and_wait.sh", "3600"] # Replace 3600 with your desired duration in seconds
