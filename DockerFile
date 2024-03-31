@@ -1,5 +1,5 @@
 # Use an appropriate CUDA base image
-FROM nvidia/cuda:11.0-base-ubuntu20.04
+FROM nvidia/cuda:12.3.2-runtime-ubuntu22.04
 
 # Set a working directory (optional)
 WORKDIR /app
@@ -8,10 +8,10 @@ WORKDIR /app
 # For example: RUN apt-get update && apt-get install -y <your-dependencies>
 
 # Copy your CUDA application into the Docker container
-COPY add.v.3 /app/add.v.3
+COPY add.v.3 /app/add.v3
 
 # Ensure the application is executable
-RUN chmod +x /app/add.v.3
+RUN chmod +x /app/add.v3
 
 # Set the default command to run your application
 # Utilize all 8 GPUs using CUDA_VISIBLE_DEVICES
