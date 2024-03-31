@@ -13,21 +13,21 @@ This README provides instructions on how to build and run a Docker container for
 1. **Clone the Repository** (if applicable)
 
    If the application and Dockerfile are hosted in a repository, first clone the repository:
-
+  $ git clone https://github.com/amihai4by/Gpu-Runs
 2. **Navigate to the Directory**
 
 Change directory to where the `Dockerfile` is located:
-
+  $ cd Gpu-Runs
 3. **Build the Docker Image**
 
 Run the following command to build the Docker image:
-
+  $ docker build -t cuda-app .
 This command builds a Docker image with the tag `cuda-app`.
 
 ## Running the Docker Container
 
 To run the Docker container with access to all 8 GPUs:
-
+  $ docker run --gpus all cuda-app /app/run_and_wait.sh 1200
 This command runs the `cuda-app` Docker image, enabling it to access all available GPUs on the host machine.
 
 ## Customizing the Execution
