@@ -34,7 +34,9 @@ This command builds a Docker image with the tag `cuda-app`.
 ## Running the Docker Container
 
 To run the Docker container with access to all 8 GPUs:
+
   $ docker run --gpus all cuda-app /app/run_and_wait.sh 1200
+  
 This command runs the `cuda-app` Docker image, enabling it to access all available GPUs on the host machine.
 
 ## Customizing the Execution
