@@ -1,6 +1,6 @@
 # CUDA Application Docker Container
 ######## warning !!!!!  ######
-##  THIS app will not stop it's self until you stop it! ###
+##  THIS app will not stop it's self until you stop it! ### (added a little timeer script to run with)
 This README provides instructions on how to build and run a Docker container for the CUDA application `add.v3`, designed to run on an NVIDIA DGX system with H100 GPUs.
 
 ## Prerequisites
