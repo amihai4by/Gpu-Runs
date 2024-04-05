@@ -15,5 +15,19 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file DockerFile --tag App.v3:$(date +%s)
+      run: docker build . --file DockerFile --tag gpu-runs:$(date +%s)
+    - name: push docker container
+      run: docker push oneman8/gpu-runs:$(date +%s)
       
+    - name: Deploy to Remote Server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          docker pull your-app:latest
+          docker stop your-app || true
+          docker rm your-app || true
+          docker run -d --name app.v3 oneman8/gpu-runs:latest
+
